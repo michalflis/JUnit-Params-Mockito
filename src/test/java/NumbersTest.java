@@ -25,10 +25,9 @@ class NumbersTest {
     void shouldCheckIfNumberCanNotBeDividedByTwo (int input) {
         //given
         Numbers numbers = new Numbers();
-        boolean result;
 
         //when
-        result = numbers.checkIfNumberCanBeDividedByTwo(input);
+        boolean result = numbers.checkIfNumberCanBeDividedByTwo(input);
 
         //then
         Assertions.assertFalse(result);
@@ -40,10 +39,9 @@ class NumbersTest {
     void shouldSumAllNumberDigit (int input, int expected) {
         //given
         Numbers numbers = new Numbers();
-        int result;
 
         //when
-        result = numbers.getSumOfDigits(input);
+        int result = numbers.getSumOfDigits(input);
 
         //then
         Assertions.assertEquals(result, expected);
