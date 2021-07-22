@@ -10,10 +10,9 @@ class NumbersTest {
     void shouldCheckIfNumberCanBeDividedByTwo (int input) {
         //given
         Numbers numbers = new Numbers();
-        boolean result;
 
         //when
-        result = numbers.checkIfNumberCanBeDividedByTwo(input);
+        boolean result = numbers.checkIfNumberCanBeDividedByTwo(input);
 
         //then
         Assertions.assertTrue(result);
