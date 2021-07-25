@@ -1,23 +1,21 @@
 public class TrainingEvaluator {
 
-    public int evaluateLengthOfTraining (int timeOfTrainingInMinutes) {
-        if (timeOfTrainingInMinutes < 30) {
+    public int evaluateTrainingParameter (int inputParameter, int lowerLimit, int higherLimit) {
+        if (inputParameter <= lowerLimit) {
             return 1;
-        } else if (timeOfTrainingInMinutes <=60) {
+        } else if (inputParameter < higherLimit) {
             return 2;
         } else {
             return 3;
         }
     }
 
+    public int evaluateLengthOfTraining (int timeOfTrainingInMinutes) {
+        return evaluateTrainingParameter(timeOfTrainingInMinutes, 29, 61);
+    }
+
     public int evaluateAmountOfCaloriesBurned (int caloriesBurned) {
-        if (caloriesBurned <= 300) {
-            return 1;
-        } else if (caloriesBurned < 400) {
-            return 2;
-        } else {
-            return 3;
-        }
+        return evaluateTrainingParameter(caloriesBurned, 300, 400);
     }
 
     public int evaluateAverageHeartRate (int averageHeartRate) {
@@ -30,21 +28,25 @@ public class TrainingEvaluator {
         }
     }
 
-    public String evaluateTrainingEfficiency (int timeOfTrainingInMinutes, int caloriesBurned, int averageHeartRate) {
-        double trainingScore = (evaluateLengthOfTraining(timeOfTrainingInMinutes) +
+    public double evaluateTrainingEfficiency (int timeOfTrainingInMinutes, int caloriesBurned, int averageHeartRate) {
+
+        return  (evaluateLengthOfTraining(timeOfTrainingInMinutes) +
                 evaluateAmountOfCaloriesBurned(caloriesBurned) * 2 +
                 evaluateAverageHeartRate(averageHeartRate) * 3) / (double) 6;
-        if (trainingScore < 1.2) {
-            return "Niska efektywność";
-        } else if (trainingScore < 2) {
-            return "Dobra efektywność";
-        } else if (trainingScore < 3) {
-            return "Bardzo dobra efektywność";
-        } else {
-            return "Doskonała efektywność";
-        }
 
     }
+     public String convertTrainingEfficiencyScoreToMessage(double trainingScore) {
 
+         if (trainingScore < 1.2) {
+             return "Niska efektywność";
+         } else if (trainingScore < 2) {
+             return "Dobra efektywność";
+         } else if (trainingScore < 3) {
+             return "Bardzo dobra efektywność";
+         } else {
+             return "Doskonała efektywność";
+         }
+
+    }
 
 }

@@ -44,17 +44,32 @@ class TrainingEvaluatorTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"0:0:180:Niska efektywność", "25:350:180:Dobra efektywność", "65:350:170:Bardzo dobra efektywność", "65:400:150:Doskonała efektywność" }, delimiter = ':')
-    void shouldEvaluateTrainingEfficiency(int timeOfTrainingInMinutes, int caloriesBurned, int averageHeartRate, String expected) {
+    @CsvSource(value = {"0:0:180:1.0", "25:350:180:1.33", "65:350:170:2.16", "65:400:150:3.0" }, delimiter = ':')
+    void shouldEvaluateTrainingEfficiency(int timeOfTrainingInMinutes, int caloriesBurned, int averageHeartRate, double expected) {
         //given
         TrainingEvaluator trainingEvaluator = new TrainingEvaluator();
 
         //when
-        String result = trainingEvaluator.evaluateTrainingEfficiency(timeOfTrainingInMinutes, caloriesBurned, averageHeartRate);
+        Double result = trainingEvaluator.evaluateTrainingEfficiency(timeOfTrainingInMinutes, caloriesBurned, averageHeartRate);
+
+        //then
+        Assertions.assertEquals(expected, result, 0.01);
+
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"0:Niska efektywność", "1.1:Niska efektywność", "1.2:Dobra efektywność", "1.9:Dobra efektywność",
+            "2:Bardzo dobra efektywność", "2.9:Bardzo dobra efektywność", "3:Doskonała efektywność" },
+            delimiter = ':')
+    void shouldConvertTrainingScoreToMessage (double trainingScore, String expected) {
+        //given
+        TrainingEvaluator trainingEvaluator = new TrainingEvaluator();
+
+        //when
+        String result = trainingEvaluator.convertTrainingEfficiencyScoreToMessage(trainingScore);
 
         //then
         Assertions.assertEquals(expected, result);
-
     }
 
 }
