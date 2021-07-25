@@ -20,7 +20,7 @@ public class SeasonName {
             case OCTOBER:
             case NOVEMBER:
                 return Season.AUTUMN;
-            default: throw new RuntimeException();
+            default: throw new IllegalArgumentException();
         }
 
     }

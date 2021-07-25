@@ -6,7 +6,6 @@ import java.time.Month;
 class SeasonNameTest {
 
     @ParameterizedTest
-
     @CsvSource(value = {"JANUARY:WINTER","APRIL:SPRING", "JULY:SUMMER", "OCTOBER:AUTUMN" }, delimiter = ':')
     void shouldGetSeasonName(Month input, Season expected) {
         //given
