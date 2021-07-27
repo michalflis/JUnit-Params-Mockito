@@ -4,8 +4,9 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 class TrainingEvaluatorTest {
 
+
     @ParameterizedTest
-    @CsvSource(value = {"0:1", "25:1", "30:2", "45:2", "60:2", "65:3" }, delimiter = ':')
+    @CsvSource(value = {"-5:1", "0:1", "25:1", "30:2", "45:2", "60:2", "65:3" }, delimiter = ':')
     void shouldEvaluateLengthOfTraining (int timeOfTrainingInMinutes, int expected) {
         //given
         TrainingEvaluator trainingEvaluator = new TrainingEvaluator();
@@ -18,7 +19,7 @@ class TrainingEvaluatorTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"0:1", "250:1", "300:1", "350:2", "400:3", "450:3" }, delimiter = ':')
+    @CsvSource(value = {"-5:1", "0:1", "250:1", "300:1", "350:2", "400:3", "450:3" }, delimiter = ':')
     void shouldEvaluateAmountOfCaloriesBurned (int caloriesBurned, int expected) {
         //given
         TrainingEvaluator trainingEvaluator = new TrainingEvaluator();
@@ -31,7 +32,7 @@ class TrainingEvaluatorTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"0:3", "150:3", "160:2", "175:2", "180:1", "200:1" }, delimiter = ':')
+    @CsvSource(value = {"-5:3", "0:3", "150:3", "160:2", "175:2", "180:1", "200:1" }, delimiter = ':')
     void shouldEvaluateAverageHeartRate (int averageHeartRate, int expected) {
         //given
         TrainingEvaluator trainingEvaluator = new TrainingEvaluator();
