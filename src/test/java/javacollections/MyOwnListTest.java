@@ -34,6 +34,20 @@ class MyOwnListTest {
         Assertions.assertFalse(result);
     }
 
+    @Test
+    void ShouldCheckIfListIsEmpty_Empty() {
+        //given
+        int[] array = {};
+        MyOwnList myOwnList = new MyOwnList(array);
+
+
+        //when
+        boolean result = myOwnList.isEmpty();
+
+        //then
+        Assertions.assertTrue(result);
+    }
+
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2})
     void shouldGetValueFromIndexOfList(int input) {

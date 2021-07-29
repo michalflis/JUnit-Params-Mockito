@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class MyOwnList implements OwnList {
 
-    int[] array;
+    private int[] array;
 
     public MyOwnList (int[] array) {
         this.array = array;
