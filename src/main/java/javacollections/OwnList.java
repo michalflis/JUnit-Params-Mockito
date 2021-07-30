@@ -7,5 +7,5 @@ public interface OwnList {
     void add(Integer element);
     Integer get(int i);
     void add(int index, Integer element);
-    void remove(int index);
+    Integer remove(int index);
 }

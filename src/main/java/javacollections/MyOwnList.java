@@ -27,8 +27,8 @@ public class MyOwnList implements OwnList {
     }
 
     @Override
-    public Integer get(int i) {
-        return array[i];
+    public Integer get(int index) {
+        return array[index];
     }
 
     @Override
@@ -45,8 +45,9 @@ public class MyOwnList implements OwnList {
     }
 
     @Override
-    public void remove(int index) {
+    public Integer remove(int index) {
         try {
+            int deletedItem = array[index];
             if (index >= array.length) {
                 throw new IndexOutOfBoundsException();
             } else {
@@ -54,9 +55,11 @@ public class MyOwnList implements OwnList {
                     array[i] = array[i + 1];
                 }
                 array = Arrays.copyOf(array, array.length - 1);
+                return deletedItem;
              }
         } catch (IndexOutOfBoundsException exception) {
             System.out.println("Nie istnieje pozycja o indeksie " + index);
+            return index;
         }
     }
 }
