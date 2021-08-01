@@ -1,51 +1,53 @@
 package javacollections;
 
-
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
-public class MyOwnGenericList<E> implements OwnGenericList{
+public class MyOwnGenericList<E> implements OwnGenericList<E> {
 
     private E[] array;
 
-    public MyOwnGenericList (E e) {
-        this.array = (E[]) Array.newInstance((Class<E>) e, DEFAULT_CAPACITY);
+    public MyOwnGenericList (Class<E> e) {
+        array = (E[]) Array.newInstance(e, DEFAULT_CAPACITY);
     }
 
-
-    public boolean add(e <E>) {
-        if (array.length <= DEFAULT_CAPACITY) {
-            for (int i = 0; i<= array.length; i++) {
-                if (array[i] == null) array[i] = e;
+    @Override
+    public boolean add(E e) {
+        for (int i = 0; i <= array.length - 1; i++) {
+            if (array[i] == null) {
+                array[i] = e;
+                return true;
             }
+        }
+        array = Arrays.copyOf(array, array.length + 1);
+        array[array.length - 1] = e;
+        return true;
+    }
 
+    @Override
+    public E get(int index) {
+        return array[index];
+    }
 
-            e = Arrays.copyOf(e, e.length + 1);
-            array[array.length - 1] = element;
+    @Override
+    public boolean remove(E o) {
+        for (int i = 0; i <= array.length - 1; i++) {
+            if (array[i] == null ){
+
+            } else if (array[i].equals(o)) {
+                array[i] = null;
+                return true;
+            }
         }
         return false;
     }
 
     @Override
-    public boolean add(Object o) {
-        if (array.length <= DEFAULT_CAPACITY) {
-            for (int i = 0; i<= array.length; i++) {
-                if (array[i] == null) array[i] = o;
-            }
-    }
-
-    @Override
-    public Object get(int index) {
-        return null;
-    }
-
-    @Override
-    public boolean remove(Object o) {
-        return false;
-    }
-
-    @Override
     public int size() {
-        return 0;
+        return array.length;
+    }
+
+    public void showArray() {
+        for (E e : array) System.out.println(e);
     }
 }
