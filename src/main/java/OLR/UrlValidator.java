@@ -11,12 +11,12 @@ public class UrlValidator {
         Scanner scan = new Scanner(System.in);
         System.out.println("Wprowadź adres URL");
         String pesel = scan.nextLine();
-        if (URLValidate(pesel)) System.out.println("Prawidłowy adres URL");
+        if (urlValidate(pesel)) System.out.println("Prawidłowy adres URL");
         else System.out.println("Błędny adres URL");
 
     }
 
-    public static boolean URLValidate(String pesel) {
+    public static boolean urlValidate(String pesel) {
 
         Pattern pattern = Pattern.compile("https?://[0-9A-z-_~.]*");
         Matcher matcher = pattern.matcher(pesel);
