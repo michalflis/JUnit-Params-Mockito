@@ -77,6 +77,7 @@ public class OwnLinkedList {
         }
 
         currentNode.setNext(currentNode.getNext().getNext());
+        currentNode.getNext().getNext().setNext(currentNode);
         return true;
     }
 
@@ -84,7 +85,7 @@ public class OwnLinkedList {
 
         int counter = 1;
         OwnLinkedListNode currentNode = head;
-        
+
         while (currentNode.getNext() != null) {
             currentNode = currentNode.getNext();
             counter++;
