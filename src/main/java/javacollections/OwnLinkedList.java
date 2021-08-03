@@ -77,7 +77,7 @@ public class OwnLinkedList {
         }
 
         currentNode.setNext(currentNode.getNext().getNext());
-        currentNode.getNext().getNext().setNext(currentNode);
+        currentNode.getNext().getNext().setPrevious(currentNode);
         return true;
     }
 
