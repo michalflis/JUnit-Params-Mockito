@@ -3,6 +3,7 @@ package javacollections;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;
+
 import java.util.NoSuchElementException;
 
 class MyOwnMapTest {
@@ -10,13 +11,12 @@ class MyOwnMapTest {
 
     @ParameterizedTest
     @CsvSource(value = {"one:pies:true", "two:kot:true"}, delimiter = ':')
-    void shouldPutNewKeyAndValueToTheMap (String key, String value, boolean expected) {
+    void shouldPutNewKeyAndValueToTheMap(String key, String value, boolean expected) {
         //given
         MyOwnMap myOwnMap = new MyOwnMap(value, key);
 
         //when
         boolean result = myOwnMap.put(key, value);
-        myOwnMap.showMeTheMap();
 
         //then
         Assertions.assertEquals(expected, result);
@@ -24,13 +24,13 @@ class MyOwnMapTest {
 
     @ParameterizedTest
     @CsvSource(value = {"pies:pies:true", "kot:kot:true"}, delimiter = ':')
-    void shouldPutExistingKeyAndValueToTheMap (String key, String value, boolean expected) {
+    void shouldPutExistingKeyAndValueToTheMap(String key, String value, boolean expected) {
         //given
         MyOwnMap myOwnMap = new MyOwnMap(value, key);
 
         //when
         boolean result = myOwnMap.put(value, key);
-        myOwnMap.showMeTheMap();
+
 
         //then
         Assertions.assertEquals(expected, result);
@@ -38,17 +38,17 @@ class MyOwnMapTest {
 
     @ParameterizedTest
     @NullSource
-    void shouldPutEmptyKeyAndValueToTheMap (String input) {
+    void shouldPutEmptyKeyAndValueToTheMap(String input) {
         //given
         MyOwnMap myOwnMap = new MyOwnMap("pies", "pies");
 
         //when
-        Assertions.assertThrows(NullPointerException.class, ()->myOwnMap.put(input,"koń"));
+        Assertions.assertThrows(NullPointerException.class, () -> myOwnMap.put(input, "koń"));
     }
 
     @ParameterizedTest
-    @ValueSource (strings = {"pies", "kot"})
-    void shouldCheckIfMapContainsTheKey (String input) {
+    @ValueSource(strings = {"pies", "kot"})
+    void shouldCheckIfMapContainsTheKey(String input) {
         //given
         MyOwnMap myOwnMap = new MyOwnMap(input, "pies");
 
@@ -60,8 +60,8 @@ class MyOwnMapTest {
     }
 
     @ParameterizedTest
-    @ValueSource (strings = {"pies", "słoń"})
-    void shouldCheckIfMapDoesNotContainsTheKey (String input) {
+    @ValueSource(strings = {"pies", "słoń"})
+    void shouldCheckIfMapDoesNotContainsTheKey(String input) {
         //given
         MyOwnMap myOwnMap = new MyOwnMap("kot", "pies");
 
@@ -73,8 +73,8 @@ class MyOwnMapTest {
     }
 
     @ParameterizedTest
-    @ValueSource (strings = {"pies", "kot"})
-    void shouldCheckIfMapContainsTheValue (String input) {
+    @ValueSource(strings = {"pies", "kot"})
+    void shouldCheckIfMapContainsTheValue(String input) {
         //given
         MyOwnMap myOwnMap = new MyOwnMap("pies", input);
 
@@ -86,8 +86,8 @@ class MyOwnMapTest {
     }
 
     @ParameterizedTest
-    @ValueSource (strings = {"pies", "słoń"})
-    void shouldCheckIfMapDoesNotContainsTheValue (String input) {
+    @ValueSource(strings = {"pies", "słoń"})
+    void shouldCheckIfMapDoesNotContainsTheValue(String input) {
         //given
         MyOwnMap myOwnMap = new MyOwnMap("kot", "kot");
 
@@ -100,7 +100,7 @@ class MyOwnMapTest {
 
     @ParameterizedTest
     @CsvSource(value = {"one:pies", "two:kot"}, delimiter = ':')
-    void shouldRemoveItemFromTheMap (String key, String value) {
+    void shouldRemoveItemFromTheMap(String key, String value) {
         //given
         MyOwnMap myOwnMap = new MyOwnMap(key, value);
 
@@ -113,17 +113,17 @@ class MyOwnMapTest {
 
     @ParameterizedTest
     @CsvSource(value = {"one:pies", "two:kot"}, delimiter = ':')
-    void shouldRemoveNotExistingItemFromTheMap (String key, String value) {
+    void shouldRemoveNotExistingItemFromTheMap(String key, String value) {
         //given
-        MyOwnMap myOwnMap = new MyOwnMap("three", value);
+        MyOwnMap myOwnMap = new MyOwnMap("1", value);
 
         //when
-        Assertions.assertThrows(NoSuchElementException.class, ()-> myOwnMap.remove(key));
+        Assertions.assertThrows(NoSuchElementException.class, () -> myOwnMap.remove(key));
     }
 
     @ParameterizedTest
     @CsvSource(value = {"one:pies", "two:kot"}, delimiter = ':')
-    void shouldGetItemFromTheMap (String key, String value) {
+    void shouldGetItemFromTheMap(String key, String value) {
         //given
         MyOwnMap myOwnMap = new MyOwnMap(key, value);
 
@@ -136,12 +136,12 @@ class MyOwnMapTest {
 
     @ParameterizedTest
     @CsvSource(value = {"one:pies", "two:kot"}, delimiter = ':')
-    void shouldGetNotExistingItemFromTheMap (String key, String value) {
+    void shouldGetNotExistingItemFromTheMap(String key, String value) {
         //given
         MyOwnMap myOwnMap = new MyOwnMap("three", value);
 
         //when
-        Assertions.assertThrows(NoSuchElementException.class, ()-> myOwnMap.get(key));
+        Assertions.assertThrows(NoSuchElementException.class, () -> myOwnMap.get(key));
     }
 }
 
