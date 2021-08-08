@@ -16,10 +16,11 @@ public class UrlValidator {
 
     }
 
+    private static final Pattern PATTERN = Pattern.compile("https?://[0-9A-z-_~.]*");
+
     public static boolean urlValidate(String pesel) {
 
-        Pattern pattern = Pattern.compile("https?://[0-9A-z-_~.]*");
-        Matcher matcher = pattern.matcher(pesel);
+        Matcher matcher = PATTERN.matcher(pesel);
         return matcher.matches();
 
     }
