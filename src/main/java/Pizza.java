@@ -3,11 +3,11 @@ import java.util.List;
 public class Pizza {
 
     private boolean isVegetarian;
-    private List<String> ingredients;
+    private List<Ingredients> ingredients;
     private int kcal;
-    private String name;
+    private PizzaName name;
 
-    public Pizza(boolean isVegetarian, List<String> ingredients, int kcal, String name) {
+    public Pizza(boolean isVegetarian, List<Ingredients> ingredients, int kcal, PizzaName name) {
         this.isVegetarian = isVegetarian;
         this.ingredients = ingredients;
         this.kcal = kcal;
@@ -18,17 +18,16 @@ public class Pizza {
         return isVegetarian;
     }
 
-    public String getName() {
+    public PizzaName getName() {
         return name;
     }
 
-    public List<String> getIngredients() {
+    public List<Ingredients> getIngredients() {
         return ingredients;
     }
 
     public int getKcal() {
         return kcal;
     }
-
 
 }

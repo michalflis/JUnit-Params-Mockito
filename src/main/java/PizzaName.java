@@ -1,0 +1,12 @@
+public enum PizzaName {
+    MARGARITA,
+    FUNGI,
+    SALAMI,
+    VEGETARIANA,
+    DIAVOLA,
+    PEPPERONI,
+    MARINARA,
+    PRIMAVERA,
+    SELERIANA,
+    CEBULIANA
+}

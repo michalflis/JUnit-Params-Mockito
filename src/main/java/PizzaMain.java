@@ -6,27 +6,31 @@ public class PizzaMain {
 
     public static void main(String[] args) {
 
-        List<String> margaritaIngredients = Arrays.asList("mozzarella", "pomidor");
-        List<String> fungiIngredients = Arrays.asList("mozzarella", "pieczarki", "pomidor");
-        List<String> salamiIngredients = Arrays.asList("mozzarella", "salami", "pomidor");
-        List<String> vegetarianaIngredients = Arrays.asList("mozzarella", "pieczarki", "pomidor", "cebula", "papryka", "seler");
-        List<String> diavolaIngredients = Arrays.asList("mozzarella", "salami", "pomidor", "cebula", "papryka");
-        List<String> pepperoniIngredients = Arrays.asList("mozzarella", "pomidor", "cebula", "papryka");
-        List<String> marinaraIngredients = Arrays.asList("pomidor");
-        List<String> primaveraIngredients = Arrays.asList("mozzarella", "pieczarki", "pomidor", "cebula", "papryka");
-        List<String> selerianaIngredients = Arrays.asList("mozzarella", "seler", "pomidor");
-        List<String> cebulianaIngredients = Arrays.asList("mozzarella", "cebula", "pomidor");
+        List<Ingredients> margaritaIngredients = Arrays.asList(Ingredients.MOZARELLA, Ingredients.POMIDOR);
+        List<Ingredients> fungiIngredients = Arrays.asList(Ingredients.MOZARELLA, Ingredients.PIECZARKI, Ingredients.POMIDOR);
+        List<Ingredients> salamiIngredients = Arrays.asList(Ingredients.MOZARELLA, Ingredients.SALAMI, Ingredients.POMIDOR);
+        List<Ingredients> vegetarianaIngredients = Arrays.asList(Ingredients.MOZARELLA, Ingredients.PIECZARKI, Ingredients.POMIDOR,
+                Ingredients.CEBULA, Ingredients.PAPRYKA, Ingredients.SELER);
+        List<Ingredients> diavolaIngredients = Arrays.asList(Ingredients.MOZARELLA, Ingredients.SALAMI, Ingredients.POMIDOR,
+                Ingredients.CEBULA, Ingredients.PAPRYKA);
+        List<Ingredients> pepperoniIngredients = Arrays.asList(Ingredients.MOZARELLA, Ingredients.POMIDOR, Ingredients.CEBULA,
+                Ingredients.PAPRYKA);
+        List<Ingredients> marinaraIngredients = Arrays.asList(Ingredients.POMIDOR);
+        List<Ingredients> primaveraIngredients = Arrays.asList(Ingredients.MOZARELLA, Ingredients.PIECZARKI, Ingredients.POMIDOR,
+                Ingredients.CEBULA, Ingredients.PAPRYKA);
+        List<Ingredients> selerianaIngredients = Arrays.asList(Ingredients.MOZARELLA, Ingredients.SELER, Ingredients.POMIDOR);
+        List<Ingredients> cebulianaIngredients = Arrays.asList(Ingredients.MOZARELLA, Ingredients.CEBULA, Ingredients.POMIDOR);
 
-        Pizza margarita = new Pizza(true, margaritaIngredients, 300, "Margarita");
-        Pizza fungi = new Pizza(true, fungiIngredients, 350, "Fungi");
-        Pizza salami = new Pizza(false, salamiIngredients, 500, "Salami");
-        Pizza vegetariana = new Pizza(true, vegetarianaIngredients, 400, "Vegetriana");
-        Pizza diavola = new Pizza(false, diavolaIngredients, 600, "Diavola");
-        Pizza pepperoni = new Pizza(true, pepperoniIngredients, 375, "Pepperoni");
-        Pizza marinara = new Pizza(true, marinaraIngredients, 250, "Marinara");
-        Pizza primavera = new Pizza(true, primaveraIngredients, 380, "Primavera");
-        Pizza seleriana = new Pizza(true, selerianaIngredients, 360, "Seleriana");
-        Pizza cebuliana = new Pizza(true, cebulianaIngredients, 320, "Cebuliana");
+        Pizza margarita = new Pizza(true, margaritaIngredients, 300, PizzaName.MARGARITA);
+        Pizza fungi = new Pizza(true, fungiIngredients, 350, PizzaName.FUNGI);
+        Pizza salami = new Pizza(false, salamiIngredients, 500, PizzaName.SALAMI);
+        Pizza vegetariana = new Pizza(true, vegetarianaIngredients, 400, PizzaName.VEGETARIANA);
+        Pizza diavola = new Pizza(false, diavolaIngredients, 600, PizzaName.DIAVOLA);
+        Pizza pepperoni = new Pizza(true, pepperoniIngredients, 375, PizzaName.PEPPERONI);
+        Pizza marinara = new Pizza(true, marinaraIngredients, 250, PizzaName.MARINARA);
+        Pizza primavera = new Pizza(true, primaveraIngredients, 380, PizzaName.PRIMAVERA);
+        Pizza seleriana = new Pizza(true, selerianaIngredients, 360, PizzaName.SELERIANA);
+        Pizza cebuliana = new Pizza(true, cebulianaIngredients, 320, PizzaName.CEBULIANA);
 
         List<Pizza> menu = List.of(margarita, fungi, salami, vegetariana, diavola, pepperoni, marinara, primavera, seleriana, cebuliana);
 
@@ -46,17 +50,17 @@ public class PizzaMain {
 
     public static void printPizzasWithSeler(List<Pizza> menu) {
         menu.stream()
-                .filter((Pizza pizza) -> pizza.getIngredients().contains("seler"))
+                .filter((Pizza pizza) -> pizza.getIngredients().contains(Ingredients.SELER))
                 .forEach((Pizza pizza) -> System.out.println(pizza.getName()));
     }
 
     public static boolean checkIfExistVeggiePizzaContainingPaprikaAndTomato(List<Pizza> menu) {
         return menu.stream().filter(Pizza::isVegetarian).anyMatch((Pizza pizza) ->
-                pizza.getIngredients().contains("pomidor") && (pizza.getIngredients().contains("papryka")));
+                pizza.getIngredients().contains(Ingredients.POMIDOR) && (pizza.getIngredients().contains(Ingredients.PAPRYKA)));
     }
 
     public static boolean checkIfAllPizzaContainsMozzarella(List<Pizza> menu) {
-        return menu.stream().allMatch((Pizza pizza) -> pizza.getIngredients().contains("mozarella"));
+        return menu.stream().allMatch((Pizza pizza) -> pizza.getIngredients().contains(Ingredients.MOZARELLA));
     }
 
     public static Pizza getPizzaWithMostKcal(List<Pizza> menu) {
