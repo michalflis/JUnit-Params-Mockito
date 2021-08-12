@@ -10,7 +10,7 @@ public class Phonebook {
 
     public static void main(String[] args) throws IOException {
 
-        System.out.println(findPerson("Dupa", "Dupa"));
+        System.out.println(findPerson("Anna", "Ogon"));
     }
 
     public static void addPerson(Person person) throws IOException {
