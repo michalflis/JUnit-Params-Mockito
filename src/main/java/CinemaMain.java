@@ -24,7 +24,7 @@ public class CinemaMain {
 
     public static void groupHalls(Stream<CinemaHall> cinema) {
         Map<CinemaType, List<CinemaHall>> groupedHalls = cinema.collect(Collectors.groupingBy(CinemaHall::getCinemaType));
-        
+
         for (CinemaType cinemaType : CinemaType.values()) {
             System.out.println("Sal kinowych typu: " + cinemaType + " jest: " + groupedHalls.get(cinemaType).size());
         }
