@@ -7,15 +7,7 @@ import java.nio.file.Paths;
 
 public class SaveHtml {
 
-    private String fileName;
-    private String addressUri;
-
-    public SaveHtml(String fileName, String addressUri) {
-        this.fileName = fileName;
-        this.addressUri = addressUri;
-    }
-
-    public void saveHtmlToFile() throws Exception {
+    public static void saveHtmlToFile(String fileName, String addressUri) throws Exception {
 
         String path = "src/main/resources/" + fileName;
 
@@ -33,5 +25,5 @@ public class SaveHtml {
 
         Files.writeString(Paths.get(path), html);
 
-     }
+    }
 }

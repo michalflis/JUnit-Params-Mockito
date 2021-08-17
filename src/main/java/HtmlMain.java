@@ -2,8 +2,7 @@ public class HtmlMain {
 
     public static void main(String[] args) throws Exception {
 
-        SaveHtml saveHtml = new SaveHtml("index.html","http://osteriafino.pl/");
-        saveHtml.saveHtmlToFile();
+        SaveHtml.saveHtmlToFile("index.html","http://osteriafino.pl/");
 
     }
 
